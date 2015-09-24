@@ -1,0 +1,5 @@
+apply plugin: 'scala'
+
+dependencies {
+    compile 'io.gatling.highcharts:gatling-charts-highcharts:2.1.7'
+}

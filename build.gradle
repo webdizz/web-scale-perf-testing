@@ -1,0 +1,19 @@
+buildscript {
+    repositories { jcenter() }
+//    dependencies {
+//        classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.+'
+//    }
+}
+
+subprojects {
+    repositories { jcenter() }
+    apply plugin: 'java'
+//    apply plugin: 'nebula.provided-base'
+}
+
+task wrapper(type: Wrapper) {
+    description = 'Generates gradlew[.bat] scripts'
+    gradleVersion = '2.6'
+}
+
+apply plugin: 'base'

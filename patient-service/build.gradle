@@ -1,0 +1,20 @@
+plugins {
+    id 'application'
+//    id 'com.github.johnrengelman.shadow' version '1.2.2'
+}
+
+ext.lombok = 'org.projectlombok:lombok:1.16.6'
+
+dependencies {
+    compile 'com.github.tomakehurst:wiremock:1.57:standalone@jar',
+            'org.slf4j:slf4j-simple:1.7.12'
+    compile lombok
+}
+
+//mainClassName = 'com.epam.javacc.rnd.saas.performance.testing.patient.mock.server.PatientApiServer'
+//
+//shadowJar {
+//    dependencies {
+//        exclude(dependency(lombok))
+//    }
+//}
