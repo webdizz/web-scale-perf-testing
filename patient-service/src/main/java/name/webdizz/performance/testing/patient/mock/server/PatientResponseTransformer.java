@@ -2,8 +2,8 @@ package name.webdizz.performance.testing.patient.mock.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import name.webdizz.performance.testing.patient.api.Patient;
 
-import name.webdizz.performance.testing.client.patient.domain.Patient;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
