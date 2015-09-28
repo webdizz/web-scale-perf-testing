@@ -5,7 +5,7 @@ influxdb:
     - "8083:8083"
     - "8086:8086"
   environment:
-    - PRE_CREATE_DB=patient-service,grafana
+    - PRE_CREATE_DB=gatling,grafana
 
 gatling:
   image: webdizz/gatling
@@ -16,13 +16,18 @@ grafana:
     - "80:80"
   links:
     - influxdb
+  volumes:
+    - ./env/grafana/default.json:/app/app/dashboards/default.json
+    - ./env/grafana/config.js:/app/config.js
+    - ./env/grafana/.influx_db_configured:/.influx_db_configured
   environment:
     - INFLUXDB_IS_GRAFANADB=true
-    - INFLUXDB_HOST=influxdb
+    - INFLUXDB_HOST=192.168.176.128
     - INFLUXDB_PORT=8086
-    - INFLUXDB_NAME=grafana
+    - INFLUXDB_NAME=gatling
     - INFLUXDB_USER=root
     - INFLUXDB_PASS=root
+    - HTTP_PASS=grafana
 
 service:
   image: webdizz/baseimage-java8:8u60
