@@ -1,10 +1,33 @@
 influxdb:
   image: tutum/influxdb:latest
+  hostname: influxdb
   ports:
     - "8083:8083"
     - "8086:8086"
   environment:
-    - PRE_CREATE_DB=patient-service
+    - PRE_CREATE_DB=patient-service,grafana
 
 gatling:
   image: webdizz/gatling
+
+grafana:
+  image: tutum/grafana
+  ports:
+    - "80:80"
+  links:
+    - influxdb
+  environment:
+    - INFLUXDB_IS_GRAFANADB=true
+    - INFLUXDB_HOST=influxdb
+    - INFLUXDB_PORT=8086
+    - INFLUXDB_NAME=grafana
+    - INFLUXDB_USER=root
+    - INFLUXDB_PASS=root
+
+service:
+  image: webdizz/baseimage-java8:8u60
+  command: java -jar /patient-service-all.jar
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./patient-service/build/libs/patient-service-all.jar:/patient-service-all.jar
