@@ -8,10 +8,16 @@ influxdb:
   volumes:
     - ./env/influxdb/config.toml:/config/config.toml
   environment:
-    - PRE_CREATE_DB=gatling,grafana
+    - PRE_CREATE_DB=gatling;grafana
 
 gatling:
   image: webdizz/gatling
+  volumes:
+    - ./perf-tst/src/test/scala:/opt/gatling/user-files/simulations
+    - ./perf-tst/src/test/resources:/opt/gatling/user-files/data
+    - ./results:/opt/results
+    - ./env/gatling/gatling.conf:/opt/gatling/conf/gatling.conf
+  command: /opt/gatling/bin/gatling.sh -m -s SearchForPatient -rf /opt/results
 
 grafana:
   image: tutum/grafana
