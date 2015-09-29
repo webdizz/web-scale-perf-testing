@@ -20,23 +20,15 @@ gatling:
   command: /opt/gatling/bin/gatling.sh -m -s SearchForPatient -rf /opt/results
 
 grafana:
-  image: tutum/grafana
+  image: fabric8/grafana
   ports:
-    - "80:80"
+    - "80:3000"
   links:
     - influxdb
   volumes:
-    - ./env/grafana/default.json:/app/app/dashboards/default.json
-    - ./env/grafana/config.js:/app/config.js
-    - ./env/grafana/.influx_db_configured:/.influx_db_configured
+    - ./env/grafana/default.json:/usr/share/grafana/public/dashboards/default.json
   environment:
-    - INFLUXDB_IS_GRAFANADB=true
-    - INFLUXDB_HOST=192.168.176.128
-    - INFLUXDB_PORT=8086
-    - INFLUXDB_NAME=gatling
-    - INFLUXDB_USER=root
-    - INFLUXDB_PASS=root
-    - HTTP_PASS=grafana
+    - GF_SECURITY_ADMIN_PASSWORD=grafana
 
 service:
   image: webdizz/baseimage-java8:8u60

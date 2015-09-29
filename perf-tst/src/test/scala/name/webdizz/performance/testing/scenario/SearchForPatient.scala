@@ -20,10 +20,10 @@ class SearchForPatient extends Simulation {
 
   val users = scenario("Patients")
     .feed(Patient.feeder)
-    .exec(http("Load patient ${patientId}")
+    .exec(http("Load patients")
       .get("/patients/${patientId}"))
 
   setUp(
-    users.inject(rampUsers(10) over (10 seconds))
+    users.inject(rampUsers(10) over (10 minutes))
   ).protocols(httpConf)
 }
