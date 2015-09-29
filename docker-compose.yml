@@ -26,7 +26,7 @@ grafana:
   links:
     - influxdb
   volumes:
-    - ./env/grafana/default.json:/usr/share/grafana/public/dashboards/default.json
+    - ./env/grafana/perfdash.js:/usr/share/grafana/public/dashboards/perfdash.js
   environment:
     - GF_SECURITY_ADMIN_PASSWORD=grafana
 
