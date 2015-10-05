@@ -21,3 +21,40 @@ In order to create a deployable jar file:
 ```
     ./gradlew :patient-service:shadowJar
 ```
+
+Run everything
+------------
+
+* Run all required parts
+```sh
+    ./gradlew :patient-service:runShadow
+    dc up -d grafana
+```
+
+* Add datasource for InfluxDB
+```sh
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+            "name":"gatling",
+            "type":"influxdb",
+            "url":"http://192.168.176.128:8086",
+            "access":"proxy",
+            "password": "grafana",
+            "user": "admin",
+            "database": "gatling",
+            "basicAuth": false,
+            "basicAuthUser": "",
+            "basicAuthPassword": "",
+            "isDefault": false,
+            "jsonData": null
+        }' 'http://192.168.176.128/api/datasources'     
+
+* Open browser to check results 
+    - Login http://192.168.176.128/login ```admin/grafana```
+    - Dashboard http://192.168.176.128/dashboard/script/perfdash.js
+    
+* Make a load
+
+```sh
+    dc scale gatling=5
+```
+    

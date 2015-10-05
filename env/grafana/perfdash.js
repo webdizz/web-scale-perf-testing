@@ -94,6 +94,7 @@ for (var i = 0; i < rows; i++) {
                             }
                         ],
                         "groupByTags": [],
+                        "alias": "Succeed Requests",
                         "measurement": "allRequests.all.count",
                         "query": "SELECT mean(value) FROM /all.*.all.count/ WHERE $timeFilter GROUP BY time($interval)",
                         "rawQuery": true,
@@ -109,8 +110,39 @@ for (var i = 0; i < rows; i++) {
                                 "func": "mean"
                             }
                         ],
-                        "measurement": "Load_patients.ko.count",
+                        "alias": "Failed Requests",
+                        "measurement": "allRequests.ko.count",
                         "query": "SELECT mean(value) FROM /all.*.ko.count/ WHERE $timeFilter GROUP BY time($interval)",
+                        "rawQuery": true
+                    },
+                    {
+                        "target": "",
+                        "tags": [],
+                        "groupByTags": [],
+                        "fields": [
+                            {
+                                "name": "value",
+                                "func": "mean"
+                            }
+                        ],
+                        "measurement": "Create_patient.all.count",
+                        "alias": "Create Patients",
+                        "query": "SELECT mean(value) FROM /Create_patient.all.count/ WHERE $timeFilter GROUP BY time($interval)",
+                        "rawQuery": true
+                    },
+                    {
+                        "target": "",
+                        "tags": [],
+                        "groupByTags": [],
+                        "fields": [
+                            {
+                                "name": "value",
+                                "func": "mean"
+                            }
+                        ],
+                        "measurement": "Load_patients.all.count",
+                        "alias": "Load Patients",
+                        "query": "SELECT mean(value) FROM /Load_patients.all.count/ WHERE $timeFilter GROUP BY time($interval)",
                         "rawQuery": true
                     }
                 ],
@@ -180,10 +212,26 @@ for (var i = 0; i < rows; i++) {
                             }
                         ],
                         "groupByTags": [],
-                        "measurement": "allRequests.all.max",
-                        "query": "SELECT mean(value) FROM /all.*.all.max/ WHERE $timeFilter GROUP BY time($interval)",
+                        "alias":"Create Patients",
+                        "measurement": "Create_patient.all.max",
+                        "query": "SELECT mean(value) FROM /Create_patient.all.max/ WHERE $timeFilter GROUP BY time($interval)",
                         "rawQuery": true,
                         "tags": []
+                    },
+                    {
+                        "target": "",
+                        "tags": [],
+                        "groupByTags": [],
+                        "fields": [
+                            {
+                                "name": "value",
+                                "func": "mean"
+                            }
+                        ],
+                        "measurement": "Load_patients.all.count",
+                        "alias": "Load Patients",
+                        "query": "SELECT mean(value) FROM /Load_patients.all.max/ WHERE $timeFilter GROUP BY time($interval)",
+                        "rawQuery": true
                     }
                 ],
                 "timeFrom": null,
@@ -252,6 +300,7 @@ for (var i = 0; i < rows; i++) {
                             }
                         ],
                         "groupByTags": [],
+                        "alias":"Overall 95p",
                         "measurement": "Load_patient_.all.percentiles95-0",
                         "query": "SELECT mean(value) FROM /all.*all.percentiles95-0/ WHERE $timeFilter GROUP BY time($interval)",
                         "rawQuery": true,
@@ -265,7 +314,8 @@ for (var i = 0; i < rows; i++) {
                             }
                         ],
                         "groupByTags": [],
-                        "measurement": "Load_patient_.all.percentiles95-0",
+                        "alias":"Overall 99p",
+                        "measurement": "Load_patient_.all.percentiles99-0",
                         "query": "SELECT mean(value) FROM /all.*all.percentiles99-0/ WHERE $timeFilter GROUP BY time($interval)",
                         "rawQuery": true,
                         "tags": []
@@ -337,10 +387,26 @@ for (var i = 0; i < rows; i++) {
                             }
                         ],
                         "groupByTags": [],
-                        "measurement": "allRequests.all.max",
-                        "query": "SELECT mean(value) FROM /all.*.all.min/ WHERE $timeFilter GROUP BY time($interval)",
+                        "alias":"Create Patients",
+                        "measurement": "Create_patient.all.min",
+                        "query": "SELECT mean(value) FROM /Create_patient.all.min/ WHERE $timeFilter GROUP BY time($interval)",
                         "rawQuery": true,
                         "tags": []
+                    },
+                    {
+                        "target": "",
+                        "tags": [],
+                        "groupByTags": [],
+                        "fields": [
+                            {
+                                "name": "value",
+                                "func": "mean"
+                            }
+                        ],
+                        "measurement": "Load_patients.all.min",
+                        "alias": "Load Patients",
+                        "query": "SELECT mean(value) FROM /Load_patients.all.min/ WHERE $timeFilter GROUP BY time($interval)",
+                        "rawQuery": true
                     }
                 ],
                 "timeFrom": null,
