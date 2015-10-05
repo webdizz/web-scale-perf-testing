@@ -1,0 +1,15 @@
+@startuml
+
+actor Analyst
+[Patient Service]
+[Gatling]
+[Grafana]
+[InfluxDB]
+
+Analyst -right-> [Gatling]: Schedule load
+Analyst -down--> [Grafana]: " Analyse results"
+
+[Gatling] -right-> [Patient Service] : API Calls over HTTP
+[Gatling] -down-> [InfluxDB]: " Stores time series data"
+[Grafana] -> [InfluxDB]: Loads time series data
+@enduml
