@@ -17,7 +17,7 @@ gatling:
     - ./perf-tst/src/test/resources:/opt/gatling/user-files/data
     - ./results:/opt/results
     - ./env/gatling/gatling.conf:/opt/gatling/conf/gatling.conf
-  command: /opt/gatling/bin/gatling.sh -m -s SearchForPatient -rf /opt/results
+  command: /opt/gatling/bin/gatling.sh -m -s PatientServiceLoadScenario -rf /opt/results
 
 grafana:
   image: fabric8/grafana
