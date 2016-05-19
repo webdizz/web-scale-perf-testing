@@ -4,8 +4,7 @@ web-scale-perf-testing
 - use Docker Compose to run all at once
 - use InfluxDB + Grafana to collect metrics from Gatling
 - use dc scale gatling=N to make more load for app
-- think about Nginx/ha-proxy to have it as a load balancer, but could be too complex
-
+- added support of Vagrant
 
 Fake service for Patient entity
 ------------------------
@@ -48,13 +47,12 @@ Run everything
             "jsonData": null
         }' 'http://192.168.176.128/api/datasources'     
 
-* Open browser to check results 
+* Open browser to check results
     - Login http://192.168.176.128/login ```admin/grafana```
     - Dashboard http://192.168.176.128/dashboard/script/perfdash.js
-    
+
 * Make a load
 
 ```sh
     dc scale gatling=5
 ```
-    
