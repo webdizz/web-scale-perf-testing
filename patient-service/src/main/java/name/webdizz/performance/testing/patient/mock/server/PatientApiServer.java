@@ -76,6 +76,8 @@ public class PatientApiServer {
 
     private String[] applyExtensions(final String[] args) {
         List<String> arguments = new ArrayList<>(Arrays.asList(args));
+        arguments.add("--port");
+        arguments.add("8081");
         arguments.add("--extensions");
         arguments.add(PatientResponseTransformer.class.getCanonicalName());
         String[] argsWithExtensions = new String[arguments.size()];

@@ -45,7 +45,7 @@ class PatientServiceLoadScenario extends Simulation {
 
   // configure common HTTP stack
   val httpConf = http
-    .baseURL("http://192.168.176.128:8080")
+    .baseURL("http://192.168.176.128:8081")
     .acceptHeader("application/json;q=0.9,*/*;q=0.8")
     .acceptLanguageHeader("en-US,en;q=0.5")
     .acceptEncodingHeader("gzip, deflate")
