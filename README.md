@@ -32,12 +32,12 @@ Run everything
 
 * Add datasource for InfluxDB
 ```sh
-    curl -u admin:grafana -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+    curl -u admin:admin -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
             "name":"gatling",
             "type":"influxdb",
             "url":"http://192.168.176.128:8086",
             "access":"proxy",
-            "password": "grafana",
+            "password": "admin",
             "user": "admin",
             "database": "gatling",
             "basicAuth": false,
