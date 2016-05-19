@@ -20,7 +20,7 @@ gatling:
   command: /opt/gatling/bin/gatling.sh -m -s PatientServiceLoadScenario -rf /opt/results
 
 grafana:
-  image: fabric8/grafana
+  image: grafana/grafana:2.6.0
   ports:
     - "80:3000"
   links:
@@ -28,7 +28,7 @@ grafana:
   volumes:
     - ./env/grafana/perfdash.js:/usr/share/grafana/public/dashboards/perfdash.js
   environment:
-    - GF_SECURITY_ADMIN_PASSWORD=grafana
+    - GF_SECURITY_ADMIN_PASSWORD=admin
 
 service:
   image: webdizz/baseimage-java8:8u60
