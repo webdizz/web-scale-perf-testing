@@ -10,6 +10,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.memory = "4024"
+    vb.customize ["modifyvm", :id, "--cpus", 4]
   end
 
   config.vm.provision "shell",
@@ -27,7 +28,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell",
     run: "once",
     inline: <<-SHELL
-      apt-get -y install inux-image-extra-$(uname -r) docker-engine
+      apt-get -y install inux-image-extra-$(uname -r) docker-engine htop
       curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
       ln -s /usr/local/bin/docker-compose /usr/local/bin/dc
