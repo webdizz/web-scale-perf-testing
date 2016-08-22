@@ -48,7 +48,7 @@ Run everything
         }' 'http://192.168.176.128/api/datasources'     
 
 * Open browser to check results
-    - Login http://192.168.176.128/login ```admin/grafana```
+    - Login http://192.168.176.128/login ```admin/admin```
     - Dashboard http://192.168.176.128/dashboard/script/perfdash.js
 
 * Make a load
