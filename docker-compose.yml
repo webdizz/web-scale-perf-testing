@@ -1,5 +1,5 @@
 influxdb:
-  image: tutum/influxdb:latest
+  image: tutum/influxdb:0.13
   hostname: influxdb
   ports:
     - "8083:8083"
